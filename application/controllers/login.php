@@ -9,6 +9,7 @@ class Login extends CI_Controller {
         if($usuario) {
 		    $dados = array("mensagem" => "Logado com sucesso");
 		    $this->session->set_flashdata("success" ,"Logado com sucesso");
+		    $this->session->set_userdata("usuario_logado" , $usuario);
 		} else {
 		    $this->session->set_flashdata("danger" ,"Usuário ou senha inválida");
 		}
@@ -19,7 +20,7 @@ class Login extends CI_Controller {
     public function logout(){
 	    $this->session->unset_userdata("usuario_logado");
 		$this->session->set_flashdata("success" ,"Deslogado com sucesso");
-		
+
 		redirect("/");
 	}
 }
